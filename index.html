@@ -1,0 +1,90 @@
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Information</title>
+    <link rel="stylesheet" type="text/css" href="styles2.css">
+    <style>
+      body {
+    margin: 0;
+    padding: 0;
+    background-image: url("background.jpg");
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.8);
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+h1 {
+    color: #336699;
+}
+
+label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+input[type="text"], textarea {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+button {
+    background-color: #336699;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #1f4f82;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Login Information</h1>
+        <label for="user">Username:</label>
+        <input type="text" id="user" placeholder="Enter username"><br><br>
+        <label for="pass">Password:</label>
+        <input type="text" id="pass" placeholder="Enter password"><br><br>
+        <button onclick="generateText()">Enter</button><br><br>
+        <textarea id="output" rows="4" cols="50"></textarea><br><br>
+        <button onclick="copyText()">Copy</button>
+    </div>
+
+    <script>
+      function generateText() {
+          const username = document.getElementById("user").value;
+          const password = document.getElementById("pass").value;
+          const outputText = `{ username: "${username}", password: "${password}" },`;
+          document.getElementById("output").value = outputText;
+      }
+
+      function copyText() {
+          const outputTextarea = document.getElementById("output");
+          outputTextarea.select();
+          outputTextarea.setSelectionRange(0, 99999); // For mobile devices
+
+          document.execCommand("copy");
+
+          // You can add some visual feedback to indicate that the text has been copied, e.g., an alert or a message displayed on the page.
+          alert("Text copied to clipboard!");
+      }
+  </script>
+</body>
+</html>
